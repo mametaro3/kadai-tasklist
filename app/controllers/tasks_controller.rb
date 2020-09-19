@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  # コントローラファイルに定義されているこれらのアクションを実行する
   def index 
     @tasks = Task.all
   end 
@@ -24,6 +25,7 @@ class TasksController < ApplicationController
   end 
   
   def edit
+    @task = Task.find(params[:id])
   end 
   
   def update
@@ -39,7 +41,7 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @task = Task.find(params[]:id)
+    @task = Task.find(params[:id])
     @task.destroy
     
     flash[:success] = 'Taskは正常に削除されました'
@@ -47,7 +49,7 @@ class TasksController < ApplicationController
   end 
   
   # Strong Parameter 
-  def messege_params
-    params.require(:message).permit(:content)
+  def task_params
+    params.require(:task).permit(:content)
   end 
 end
