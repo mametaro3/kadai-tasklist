@@ -6,7 +6,8 @@ class TasksController < ApplicationController
   
   # コントローラファイルに定義されているこれらのアクションを実行する
   def index
-    @tasks = Task.all
+    # ログインしているユーザのタスクのみトップページに表示する（Readできるようにしている）
+    @tasks = current_user.tasks
   end 
   
   def show
